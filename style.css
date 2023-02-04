@@ -109,12 +109,18 @@ align-items: center;
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-box:active .flip-box-inner {
+  .flip-box.active .flip-box-inner{
     transform: rotateY(180deg);
   }
-  
+  .flip-box.match .flip-box-inner{
+    transform: rotateY(180deg);
+  }
   /* Position the front and back side */
   .card, .flip-box-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
     position: absolute;
     width: 7vw;
     height: 13vh;
