@@ -81,14 +81,61 @@ align-items: center;
     grid-template-columns: repeat(7, 5fr);
     grid-template-rows: repeat(5, 5fr);
 }
-#div-wrapper > *{
+.flip-box .flip-box-inner .card {
     /* border: 1px dotted green; */
     width: 7vw;
     height: 15vh;
 }
 
-.card{
-}
+
+/* Flip part*/
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+    background-color: transparent;
+    width: 7vw;
+    height: 15vh;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-box-inner {
+    position: relative;
+    width: 7vw;
+    height: 15vh;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-box:active .flip-box-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .card, .flip-box-back {
+    position: absolute;
+    width: 7vw;
+    height: 13vh;
+    border-radius: 5%;
+    margin-left: -0.5vw;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side */
+  .card {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flip-box-back {
+    background-color: #bbb;
+    color: white;
+    transform: rotateY(180deg);
+  }
  
 
 @media screen and (max-width: 600px) and (min-width: 480px) {
@@ -114,9 +161,13 @@ align-items: center;
         height: 57vh;
         width: 66vw;
        }
-       #div-wrapper > *{
+       .flip-box .flip-box-inner .card{
         width: 9vw;
         height: 11vh;
+    }
+    .flip-box-back {
+        width: 7vw;
+        height: 10vh;
     }
   }
   @media screen and (max-width: 900px) and (min-width: 601px) {
@@ -142,9 +193,13 @@ align-items: center;
         height: 67vh;
         width: 60vw;
        }
-       #div-wrapper > *{
+       .flip-box .flip-box-inner .card{
         width: 9vw;
         height: 14vh;
+    }
+    .flip-box-back {
+        width: 7.5vw;
+        height: 13vh;
     }
   }
   @media screen and (max-width: 1030px) and (min-width: 901px){
@@ -165,9 +220,14 @@ align-items: center;
         padding-left: 1.5rem;
         width: 56vw;
        }
-       #div-wrapper > *{
+       .flip-box .flip-box-inner .card{
         width: 8vw;
-        height: 18vh;
+        height: 16vh;
+    }
+    .flip-box-back {
+        margin-left: .2vw; 
+        width: 7vw;
+        height: 14vh;
     }
   }
   @media screen and (min-width: 1031px){
@@ -189,8 +249,13 @@ align-items: center;
         width: 50vw;
         height: 60vh;
        }
-       #div-wrapper > *{
+       .flip-box .flip-box-inner .card{
         width: 5vw;
         height: 14vh;
+    }
+    .flip-box-back {
+        width: 4.5vw;
+        height: 13vh;
+        margin-left: 3vw;
     }
   }
